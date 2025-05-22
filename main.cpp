@@ -1,23 +1,28 @@
-#include "mainwindow.h"
-
-#include <QApplication>
-#include <QLocale>
-#include <QTranslator>
+#include <QGuiApplication>
+#include <QQmlApplicationEngine>
+#include <QWindow>
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+    QGuiApplication app(argc, argv);
 
-    QTranslator translator;
-    const QStringList uiLanguages = QLocale::system().uiLanguages();
-    for (const QString &locale : uiLanguages) {
-        const QString baseName = "StockPilot_" + QLocale(locale).name();
-        if (translator.load(":/i18n/" + baseName)) {
-            a.installTranslator(&translator);
-            break;
+    QQmlApplicationEngine engine;
+
+    QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
+                     &app, []() { QCoreApplication::exit(-1); },
+                     Qt::QueuedConnection);
+
+    app.setWindowIcon(QIcon(":/assets/LogoWithoutText.png"));
+
+    engine.load(QUrl(QStringLiteral("qrc:/qml/Main.qml")));
+
+    if (!engine.rootObjects().isEmpty()) {
+        QObject* topLevel = engine.rootObjects().first();
+        QWindow* window = qobject_cast<QWindow*>(topLevel);
+        if (window) {
+            window->showMaximized();
         }
     }
-    MainWindow w;
-    w.show();
-    return a.exec();
+
+    return app.exec();
 }

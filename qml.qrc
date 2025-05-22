@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/Main.qml</file>
+        <file>qml/pages/HomePage.qml</file>
+        <file>qml/pages/SplashScreen.qml</file>
+        <file>assets/LogoStockPilot.png</file>
+        <file>assets/LogoWithoutText.png</file>
+    </qresource>
+</RCC>
