@@ -21,18 +21,27 @@ Item {
         }
 
         Timer {
-            id: delayTimer
+            id: delayTimerentry
             interval: 1000
             running: true
             repeat: false
             onTriggered: entryAnim.start()
         }
 
+        Timer {
+            id: delayTimerexit
+            interval: 3000
+            running: false
+            repeat: false
+            onTriggered: exitAnim.start()
+        }
+
         ParallelAnimation {
             id: entryAnim
-            onStarted: text.opacity = 1
+            onStarted: logo.opacity = 1
             NumberAnimation { target: logo; property: "opacity"; from: 0; to: 1; duration: 600 }
             NumberAnimation { target: logo; property: "scale"; from: 0.25; to: 0.5; duration: 600; easing.type: Easing.OutBack }
+            onFinished: delayTimerexit.start()
         }
 
         SequentialAnimation {
@@ -40,16 +49,7 @@ Item {
             onFinished: splash.finished()
             NumberAnimation { target: logo; property: "scale"; from: 0.5; to: 0.25; duration: 400; easing.type: Easing.InBack }
             NumberAnimation { target: logo; property: "opacity"; from: 1; to: 0; duration: 400 }
-            ScriptAction { script: text.opacity = 0 }
-        }
-
-        MouseArea {
-            anchors.fill: parent
-            onClicked: {
-                if (!exitAnim.running && !entryAnim.running) {
-                    exitAnim.start()
-                }
-            }
+            ScriptAction { script: logo.opacity = 0 }
         }
     }
 }

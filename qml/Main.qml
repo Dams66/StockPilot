@@ -5,8 +5,8 @@ import "pages"
 
 ApplicationWindow {
     visible: true
-    width: 800
-    height: 600
+    minimumWidth: 800
+    minimumHeight: 600
     title: "StockPilot"
 
     Loader {
@@ -14,7 +14,8 @@ ApplicationWindow {
         anchors.fill: parent
         source: "pages/SplashScreen.qml"
         onLoaded: {
-            pageLoader.item.finished.connect(showHome)
+            if (pageLoader.item && pageLoader.item.finished)
+                pageLoader.item.finished.connect(showHome)
         }
     }
 
