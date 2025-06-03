@@ -15,10 +15,7 @@ qt_add_executable(appStockPilot
     ${QML_RESOURCES}
     src/order.cpp src/product.cpp src/stockenv.cpp
     include/order.h include/product.h include/stockenv.h
-    include/stockenvcontroller.h
-    src/stockenvcontroller.cpp
-    src/stockenvmanager.cpp
-    include/stockenvmanager.h
+    include/stockenvcontroller.h include/stockenvcontroller.cpp
 )
 
 target_include_directories(appStockPilot

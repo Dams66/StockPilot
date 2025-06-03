@@ -75,8 +75,10 @@ Item {
                                 anchors.fill: parent
                             }
                         }
-
-                        onClicked: console.log("Créer un environnement")
+                        onClicked: {
+                                    var index = envManager.createEnvironment()
+                                    console.log("Nouveau StockEnv à l'index:", index)
+                                }
                     }
                 }
             }
