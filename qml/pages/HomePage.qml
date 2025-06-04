@@ -2,6 +2,9 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import StockPilot 1.0
+
+
 Item {
     anchors.fill: parent
 
@@ -76,7 +79,7 @@ Item {
                             }
                         }
                         onClicked: {
-                                    var index = envManager.createEnvironment()
+                                    var index = EnvManager.createEnvironment()
                                     console.log("Nouveau StockEnv à l'index:", index)
                                 }
                     }
@@ -90,6 +93,23 @@ Item {
                 color: "#f0f0f0"
                 border.color: "#888"
                 border.width: 2
+
+                ListView {
+                    anchors.fill: parent
+                    model: EnvManager.environments
+                    delegate: Rectangle {
+                        height: 40
+                        width: parent.width
+                        color: index % 2 === 0 ? "#ddd" : "#eee"
+                        Text {
+                            text: modelData.name
+                            anchors.verticalCenter: parent.verticalCenter
+                            anchors.left: parent.left
+                            anchors.leftMargin: 10
+                            font.pixelSize: 14
+                        }
+                    }
+                }
             }
         }
     }

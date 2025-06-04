@@ -19,11 +19,11 @@ int main(int argc, char *argv[])
                      &app, []() { QCoreApplication::exit(-1); },
                      Qt::QueuedConnection);
 
-    StockEnvManager envManager;
+    static StockEnvManager envManager;
 
     app.setWindowIcon(QIcon(":/assets/LogoWithoutText.png"));
 
-    engine.rootContext()->setContextProperty("envManager", &envManager);
+    qmlRegisterSingletonInstance<StockEnvManager>("StockPilot", 1, 0, "EnvManager", &envManager);
 
     qmlRegisterType<StockEnvController>("StockPilot", 1, 0, "StockEnvController");
 

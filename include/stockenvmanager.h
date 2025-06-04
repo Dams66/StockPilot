@@ -3,12 +3,16 @@
 
 #include <QObject>
 #include <QVector>
+#include <QQmlEngine>
 #include <memory>
 #include "stockenv.h"
 
 class StockEnvManager : public QObject {
     Q_OBJECT
+    QML_ELEMENT
+    QML_SINGLETON
     Q_PROPERTY(int count READ count NOTIFY countChanged)
+    Q_PROPERTY(QVariantList environments READ getEnvironments NOTIFY environmentsChanged)
 
 public:
     explicit StockEnvManager(QObject* parent = nullptr);
@@ -17,10 +21,13 @@ public:
     Q_INVOKABLE void deleteEnvironment(int index);
     Q_INVOKABLE bool exists(int index) const;
 
+    Q_INVOKABLE QVariantList getEnvironments() const;
+
     int count() const;
 
 signals:
     void countChanged();
+    void environmentsChanged();
 
 private:
     QVector<std::shared_ptr<StockEnv>> m_envs;

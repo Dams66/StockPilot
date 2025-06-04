@@ -1,8 +1,8 @@
 
 #include "stockenv.h"
 
-StockEnv::StockEnv(int x, int y, int z)
-    : dimX(x), dimY(y), dimZ(z),
+StockEnv::StockEnv(int x, int y, int z, const QString& name)
+    : dimX(x), dimY(y), dimZ(z), m_name(name),
     env3D(x, std::vector<std::vector<StockCell>>(y, std::vector<StockCell>(z))) {}
 
 void StockEnv::addProduct(int x, int y, int z, const Product& produit, int quantite) {
