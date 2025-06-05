@@ -80,9 +80,7 @@ Item {
                             }
                         }
                         onClicked: {
-                            var index = EnvManager.createEnvironment()
-                            console.log("Nouveau StockEnv à l'index:", index)
-                            stackViewRef.push("EnvCreationPage.qml", {envIndex : index, stackViewRef: stackViewRef})
+                            stackViewRef.push("EnvCreationPage.qml", {stackViewRef: stackViewRef})
                         }
                     }
                 }

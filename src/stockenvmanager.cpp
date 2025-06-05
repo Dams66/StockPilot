@@ -5,27 +5,23 @@
 StockEnvManager::StockEnvManager(QObject* parent)
     : QObject(parent) {}
 
-int StockEnvManager::createEnvironment() {
-    m_envs.append(std::make_shared<StockEnv>());
-    emit countChanged();
+
+int StockEnvManager::createEnvironment(int x, int y, int z, const QString& name) {
+    m_envs.append(std::make_shared<StockEnv>(x, y, z, name));
     emit environmentsChanged();
     return m_envs.size() - 1;
 }
 
-void StockEnvManager::deleteEnvironment(int index) {
-    if (index >= 0 && index < m_envs.size()) {
-        m_envs.remove(index);
-        emit countChanged();
-    }
-}
+// void StockEnvManager::deleteEnvironment(int index) {
+//     if (index >= 0 && index < m_envs.size()) {
+//         m_envs.remove(index);
+//         emit environmentsChanged();
+//     }
+// }
 
-bool StockEnvManager::exists(int index) const {
-    return index >= 0 && index < m_envs.size();
-}
-
-int StockEnvManager::count() const {
-    return m_envs.size();
-}
+// bool StockEnvManager::exists(int index) const {
+//     return index >= 0 && index < m_envs.size();
+// }
 
 QVariantList StockEnvManager::getEnvironments() const {
     QVariantList list;

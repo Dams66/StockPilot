@@ -4,7 +4,6 @@
 #include <QQuickStyle>
 #include <QQmlContext>
 
-#include "stockenvcontroller.h"
 #include "stockenvmanager.h"
 
 int main(int argc, char *argv[])
@@ -24,8 +23,6 @@ int main(int argc, char *argv[])
     app.setWindowIcon(QIcon(":/assets/LogoWithoutText.png"));
 
     qmlRegisterSingletonInstance<StockEnvManager>("StockPilot", 1, 0, "EnvManager", &envManager);
-
-    qmlRegisterType<StockEnvController>("StockPilot", 1, 0, "StockEnvController");
 
     engine.load(QUrl(QStringLiteral("qrc:/qml/Main.qml")));
 

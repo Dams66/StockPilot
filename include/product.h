@@ -5,24 +5,26 @@
 #include <QImage>
 
 class Product {
+
 public:
     Product() = default;
-    Product(const QString& name, long reference, const QImage& code);
+    Product(const QString& name, long reference, const QImage& code)
+        : m_name(name), m_reference(reference), m_code(code) {}
 
     // Getters
-    QString getName() const;
-    long getReference() const;
-    QImage getCode() const;
+    QString getName() const { return m_name; }
+    long getReference() const { return m_reference; }
+    QImage getCode() const { return m_code; }
 
     // Setters
-    void setName(const QString& name);
-    void setReference(long reference);
-    void setCode(const QImage& code);
+    void setName(const QString& name) { m_name = name; }
+    void setReference(long reference) { m_reference = reference; }
+    void setCode(const QImage& code) { m_code = code; }
 
 private:
-    QString name_;
-    long reference_;
-    QImage code_;
+    QString m_name;
+    long m_reference = 0;
+    QImage m_code;
 };
 
 #endif // PRODUCT_H

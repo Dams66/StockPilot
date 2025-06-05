@@ -18,49 +18,39 @@ public:
         int quantity;
     };
 
-    Order();
+    Order(int weight = 0, int length = 0, int width = 0, PalletType palletType = PalletType::Europe)
+        : m_weight(weight), m_length(length), m_width(width), m_palletType(palletType) {}
 
-    // Getters / Setters
-    QString getOrderNumber() const;
-    void setOrderNumber(const QString& orderNumber);
-
-    QList<ProductQuantity> getProductList() const;
     void addProduct(const Product& product, int quantity);
 
-    int getWeight() const;
-    void setWeight(int weight);
+    // Getters
+    QString getOrderNumber() const { return m_orderNumber; }
+    QList<ProductQuantity> getProductList() const { return productList_; }
+    int getWeight() const { return m_weight; }
+    int getLength() const { return m_length; }
+    int getWidth() const { return m_width; }
+    PalletType getPalletType() const { return m_palletType; }
+    QString getAddress() const { return m_adress; }
 
-    int getLength() const;
-    void setLength(int length);
-
-    int getWidth() const;
-    void setWidth(int width);
-
-    PalletType getPalletType() const;
-    void setPalletType(PalletType type);
-
-    QString getAddress() const;
-    void setAddress(const QString& address);
-
-    //Personnel* getPreparer() const;
-    //void setPreparer(Personnel* preparer);
-
-    //Personnel* getPointer() const;
-    //void setPointer(Personnel* pointer);
+    // Setters
+    void setOrderNumber(const QString& orderNumber) { m_orderNumber = orderNumber; }
+    void setWeight(int weight) { m_weight = weight; }
+    void setLength(int length) { m_length = length; }
+    void setWidth(int width) { m_width = width; }
+    void setPalletType(PalletType type) { m_palletType = type; }
+    void setAddress(const QString& address) { m_adress = address; }
 
 private:
     QList<ProductQuantity> productList_;
-    //Personnel* preparer_ = nullptr;
-    //Personnel* pointer_ = nullptr;
 
-    int weight_ = 0;
-    int length_ = 0;
-    int width_ = 0;
+    int m_weight = 0;
+    int m_length = 0;
+    int m_width = 0;
 
-    PalletType palletType_ = PalletType::Europe;
+    PalletType m_palletType = PalletType::Europe;
 
-    QString address_;
-    QString orderNumber_;
+    QString m_adress;
+    QString m_orderNumber;
 };
 
 #endif // ORDER_H

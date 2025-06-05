@@ -14,23 +14,22 @@ struct StockCell {
 };
 
 class StockEnv {
-private:
-    std::vector<std::vector<std::vector<StockCell>>> env3D;
-    int dimX, dimY, dimZ;
-    QString m_name;  // ajout du nom
 
 public:
     StockEnv() = default;
-    StockEnv(int x, int y, int z, const QString &name = QString());
+    StockEnv(int x, int y, int z, const QString &name);
 
-    void addProduct(int x, int y, int z, const Product& product, int quantity);
-    StockCell getCell(int x, int y, int z) const;
-    void flushCell(int x, int y, int z);
+    // void addProduct(int x, int y, int z, const Product& product, int quantity);
+    // StockCell getCell(int x, int y, int z) const;
+    // void flushCell(int x, int y, int z);
 
     QString name() const { return m_name; }
     void setName(const QString &name) { m_name = name; }
 
-    Q_INVOKABLE void debugPrint();
+private:
+    std::vector<std::vector<std::vector<StockCell>>> env3D;
+    int m_dimX, m_dimY, m_dimZ;
+    QString m_name;
 };
 
 #endif // STOCKENV_H
