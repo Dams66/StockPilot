@@ -9,17 +9,14 @@ ApplicationWindow {
     minimumHeight: 600
     title: "StockPilot"
 
-    Loader {
-        id: pageLoader
+    StackView {
+        id: stackView
         anchors.fill: parent
-        source: "pages/SplashScreen.qml"
-        onLoaded: {
-            if (pageLoader.item && pageLoader.item.finished)
-                pageLoader.item.finished.connect(showHome)
-        }
-    }
 
-    function showHome() {
-        pageLoader.source = "pages/HomePage.qml"
+        initialItem: SplashScreen {
+            onFinished: {
+                stackView.push("pages/HomePage.qml",{ stackViewRef: stackView })
+            }
+        }
     }
 }

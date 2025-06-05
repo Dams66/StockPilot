@@ -5,5 +5,6 @@
         <file>qml/pages/SplashScreen.qml</file>
         <file>assets/LogoStockPilot.png</file>
         <file>assets/LogoWithoutText.png</file>
+        <file>qml/pages/EnvCreationPage.qml</file>
     </qresource>
 </RCC>

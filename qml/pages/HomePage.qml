@@ -6,6 +6,7 @@ import StockPilot 1.0
 
 
 Item {
+    property StackView stackViewRef
     anchors.fill: parent
 
     Rectangle {
@@ -79,9 +80,10 @@ Item {
                             }
                         }
                         onClicked: {
-                                    var index = EnvManager.createEnvironment()
-                                    console.log("Nouveau StockEnv à l'index:", index)
-                                }
+                            var index = EnvManager.createEnvironment()
+                            console.log("Nouveau StockEnv à l'index:", index)
+                            stackViewRef.push("EnvCreationPage.qml", {envIndex : index, stackViewRef: stackViewRef})
+                        }
                     }
                 }
             }
