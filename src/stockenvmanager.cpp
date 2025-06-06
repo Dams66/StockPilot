@@ -12,24 +12,10 @@ int StockEnvManager::createEnvironment(int x, int y, int z, const QString& name)
     return m_envs.size() - 1;
 }
 
-// void StockEnvManager::deleteEnvironment(int index) {
-//     if (index >= 0 && index < m_envs.size()) {
-//         m_envs.remove(index);
-//         emit environmentsChanged();
-//     }
-// }
-
-// bool StockEnvManager::exists(int index) const {
-//     return index >= 0 && index < m_envs.size();
-// }
-
-QVariantList StockEnvManager::getEnvironments() const {
-    QVariantList list;
+QList<QObject*> StockEnvManager::getEnvironments() const {
+    QList<QObject*> list;
     for (const auto &env : m_envs) {
-        QVariantMap map;
-        map["name"] = env->name();
-        list.append(map);
-        qDebug() << map;
+        list.append(env.get());
     }
     return list;
 }

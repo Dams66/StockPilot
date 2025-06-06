@@ -101,6 +101,7 @@ Item {
                         height: 40
                         width: parent.width
                         color: index % 2 === 0 ? "#ddd" : "#eee"
+
                         Text {
                             text: modelData.name
                             anchors.verticalCenter: parent.verticalCenter
@@ -108,7 +109,21 @@ Item {
                             anchors.leftMargin: 10
                             font.pixelSize: 14
                         }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                console.log("Item cliqué :", modelData.name)
+                                stackViewRef.push("EnvManagement.qml", {
+                                    stackViewRef: stackViewRef,
+                                    environment: modelData
+                                })
+                            }
+                            hoverEnabled: true
+                            cursorShape: Qt.PointingHandCursor
+                        }
                     }
+
                 }
             }
         }

@@ -12,16 +12,15 @@ class StockEnvManager : public QObject {
     QML_ELEMENT
     QML_SINGLETON
 
-    Q_PROPERTY(QVariantList environments READ getEnvironments NOTIFY environmentsChanged)
+    Q_PROPERTY(QList<QObject*> environments READ getEnvironments NOTIFY environmentsChanged)
+
 
 public:
     explicit StockEnvManager(QObject* parent = nullptr);
 
     Q_INVOKABLE int createEnvironment(int x, int y, int z, const QString& name);
-    //Q_INVOKABLE void deleteEnvironment(int index);
-    //Q_INVOKABLE bool exists(int index) const;
 
-    Q_INVOKABLE QVariantList getEnvironments() const;
+    Q_INVOKABLE QList<QObject*> getEnvironments() const;
 
 signals:
     void environmentsChanged();

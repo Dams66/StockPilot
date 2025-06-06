@@ -1,20 +1,16 @@
-
 #include "stockenv.h"
+#include <QDebug>
 
-StockEnv::StockEnv(int x, int y, int z, const QString& name)
-    : m_dimX(x), m_dimY(y), m_dimZ(z), m_name(name),
+StockEnv::StockEnv(QObject* parent)
+    : QObject(parent) {}
+
+StockEnv::StockEnv(int x, int y, int z, const QString& name, QObject* parent)
+    : QObject(parent), m_dimX(x), m_dimY(y), m_dimZ(z), m_name(name),
     env3D(x, std::vector<std::vector<StockCell>>(y, std::vector<StockCell>(z))) {}
 
-// void StockEnv::addProduct(int x, int y, int z, const Product& produit, int quantite) {
-//     if (x >= 0 && x < m_dimX && y >= 0 && y < m_dimY && z >= 0 && z < m_dimZ) {
-//         env3D[x][y][z] = StockCell(produit, quantite);
-//     }
-// }
-
-// StockCell StockEnv::getCell(int x, int y, int z) const {
-//     return env3D.at(x).at(y).at(z);
-// }
-
-// void StockEnv::flushCell(int x, int y, int z) {
-//     env3D[x][y][z].quantity = 0;
-// }
+void StockEnv::setName(const QString& name) {
+    if (m_name != name) {
+        m_name = name;
+        emit nameChanged();
+    }
+}

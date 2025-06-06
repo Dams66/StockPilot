@@ -6,5 +6,6 @@
         <file>assets/LogoStockPilot.png</file>
         <file>assets/LogoWithoutText.png</file>
         <file>qml/pages/EnvCreationPage.qml</file>
+        <file>qml/pages/EnvManagement.qml</file>
     </qresource>
 </RCC>

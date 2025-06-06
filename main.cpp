@@ -24,6 +24,8 @@ int main(int argc, char *argv[])
 
     qmlRegisterSingletonInstance<StockEnvManager>("StockPilot", 1, 0, "EnvManager", &envManager);
 
+    qmlRegisterType<StockEnv>("StockPilot", 1, 0, "StockEnv");
+
     engine.load(QUrl(QStringLiteral("qrc:/qml/Main.qml")));
 
     if (!engine.rootObjects().isEmpty()) {
