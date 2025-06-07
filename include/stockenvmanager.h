@@ -22,6 +22,10 @@ public:
 
     Q_INVOKABLE QList<QObject*> getEnvironments() const;
 
+    Q_INVOKABLE bool loadFromFile();
+    Q_INVOKABLE bool saveToFile();
+
+
 signals:
     void environmentsChanged();
 

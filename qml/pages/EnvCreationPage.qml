@@ -32,6 +32,9 @@ Item {
                 id: nameField
                 visible: !nameEntered
                 placeholderText: "Nom de l'environnement"
+                Component.onCompleted: {
+                    Qt.callLater(() => nameField.forceActiveFocus())
+                }
                 onAccepted: {
                     if (text.trim() !== "") {
                         envName = text.trim()
