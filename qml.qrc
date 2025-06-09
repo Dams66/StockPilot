@@ -7,5 +7,6 @@
         <file>assets/LogoWithoutText.png</file>
         <file>qml/pages/EnvCreationPage.qml</file>
         <file>qml/pages/EnvManagement.qml</file>
+        <file>qml/component/EnvView.qml</file>
     </qresource>
 </RCC>

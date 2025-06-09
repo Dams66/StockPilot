@@ -4,7 +4,7 @@ project(StockPilot VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Quick QuickControls2)
+find_package(Qt6 REQUIRED COMPONENTS Core Quick Quick3D QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -25,4 +25,4 @@ qt_add_executable(appStockPilot
 
 target_include_directories(appStockPilot PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-target_link_libraries(appStockPilot PRIVATE Qt6::Core Qt6::Quick Qt6::QuickControls2)
+target_link_libraries(appStockPilot PRIVATE Qt6::Core Qt6::Quick Qt6::Quick3D Qt6::QuickControls2)
