@@ -3,6 +3,7 @@ import QtQuick.Controls
 
 Item {
     id: splash
+
     width: parent?.width || 800
     height: parent?.height || 600
 

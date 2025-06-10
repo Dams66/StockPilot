@@ -6,8 +6,12 @@ import StockPilot 1.0
 
 
 Item {
+    id: home
+
+    width: parent?.width || 800
+    height: parent?.height || 600
+
     property StackView stackViewRef
-    anchors.fill: parent
 
     Rectangle {
         anchors.fill: parent

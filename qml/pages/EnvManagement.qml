@@ -9,9 +9,9 @@ Item {
     property StackView stackViewRef
     property var environment
 
-    // Rectangle {
-    //     anchors.fill: parent
-    //     color: "black"
+    Rectangle {
+        anchors.fill: parent
+        color: "white"
 
         Column {
             anchors.centerIn: parent
@@ -33,5 +33,5 @@ Item {
                 onClicked: stackViewRef.pop()
             }
         }
-    // }
+    }
 }
